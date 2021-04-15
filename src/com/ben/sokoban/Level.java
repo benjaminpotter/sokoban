@@ -9,6 +9,8 @@ public class Level {
     Block[] current;
     Block[] complete;
 
+    public Block[] getCurrent() { return current; }
+
     public Level(Block[] start, Block[] complete) {
         this.start = start;
         this.complete = complete;

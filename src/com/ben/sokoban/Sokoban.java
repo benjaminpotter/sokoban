@@ -1,5 +1,7 @@
 package com.ben.sokoban;
 
+import com.ben.sokoban.rendering.Window;
+
 public class Sokoban {
 
     public static Sokoban inst;
@@ -9,6 +11,8 @@ public class Sokoban {
 
     Player player;
     Level level;
+
+    public Level getLevel() { return level; }
 
     int indexFromPoint (int x, int y) { return y * WIDTH + x; }
 
@@ -68,11 +72,14 @@ public class Sokoban {
 
         loadLevel();
 
+        new Window(); // spawn a new window
+
         boolean running = true;
         while (running) {
 
             // render
             drawLevel(level);
+            Window.inst.repaint();
 
             // gather player input
             // gather input is blocking

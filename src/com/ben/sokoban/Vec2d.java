@@ -2,8 +2,8 @@ package com.ben.sokoban;
 
 public class Vec2d {
 
-    int x;
-    int y;
+    public int x;
+    public int y;
 
     public Vec2d() {
         this.x = 0;

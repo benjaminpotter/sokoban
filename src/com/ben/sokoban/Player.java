@@ -1,5 +1,6 @@
 package com.ben.sokoban;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class Player extends Block {
@@ -11,6 +12,12 @@ public class Player extends Block {
     @Override
     void draw(StringBuffer buffer) {
         buffer.append("P");
+    }
+
+    @Override
+    public void drawSelf(Graphics2D g, int x, int y, int w, int h) {
+        g.setColor(Color.blue);
+        super.drawSelf(g, x, y, w, h);
     }
 
     public Vec2d gatherInput() {
