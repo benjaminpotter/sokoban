@@ -1,11 +1,5 @@
 package com.ben.sokoban;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
-
 public class Sokoban {
 
     public static Sokoban inst;
@@ -18,29 +12,8 @@ public class Sokoban {
 
     int indexFromPoint (int x, int y) { return y * WIDTH + x; }
 
-    /**
-     * Loads a level layout string from a resource
-     * @param resName name of the resource in res folder, expects file of type txt
-     * @return content from file as a string
-     */
-    static String[] loadLevelDataFromFile(String resName) {
-        StringBuilder content = new StringBuilder();
-
-        try (Stream<String> stream = Files.lines(Paths.get("C:\\dev\\sokoban\\src\\res\\" + resName), StandardCharsets.UTF_8)) {
-            stream.forEach(content::append);
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-
-        String[] levelLayouts = content.toString().split("-");
-
-        // expects file to contain two copies of the level, one "starting" and one "complete"
-        return levelLayouts;
-    }
-
     void loadLevel() {
-        String[] levelData = loadLevelDataFromFile("world.txt");
+        String[] levelData = LevelLoader.loadLevelDataFromFile("world.txt");
         String startingLayout = levelData[0];
 
         Block[] start = new Block[ WIDTH * HEIGHT ];
@@ -104,25 +77,10 @@ public class Sokoban {
             // gather player input
             // gather input is blocking
             // game will wait for player input
-            char input = player.gatherInput();
+            Vec2d input = player.gatherInput();
+            player.move(input);
 
-            switch (input) {
-                case 'w':
-                    player.move(new Vec2d(0, -1));
-                    break;
-                case 's':
-                    player.move(new Vec2d(0, 1));
-                    break;
-                case 'a':
-                    player.move(new Vec2d(-1, 0));
-                    break;
-                case 'd':
-                    player.move(new Vec2d(1, 0));
-                    break;
-                default:
-                    running = false;
-                    break;
-            }
+            // somehow exit game?
         }
     }
 

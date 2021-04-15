@@ -13,9 +13,27 @@ public class Player extends Block {
         buffer.append("P");
     }
 
-    public char gatherInput() {
+    public Vec2d gatherInput() {
         Scanner sc = new Scanner(System.in); // probably not good to create a new scanner every frame
-        return Character.toLowerCase(sc.next().charAt(0));
+
+        Vec2d result = new Vec2d(0, 0);
+
+        switch (sc.next().charAt(0)) {
+            case 'w':
+                result = new Vec2d(0, -1);
+                break;
+            case 's':
+                result = new Vec2d(0, 1);
+                break;
+            case 'a':
+                result = new Vec2d(-1, 0);
+                break;
+            case 'd':
+                result = new Vec2d(1, 0);
+                break;
+        }
+
+        return result;
     }
 
     public void move(Vec2d dir) {
