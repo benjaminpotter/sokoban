@@ -10,37 +10,9 @@ public class Player extends Block {
     }
 
     @Override
-    void draw(StringBuffer buffer) {
-        buffer.append("P");
-    }
-
-    @Override
     public void drawSelf(Graphics2D g, int x, int y, int w, int h) {
         g.setColor(Color.blue);
         super.drawSelf(g, x, y, w, h);
-    }
-
-    public Vec2d gatherInput() {
-        Scanner sc = new Scanner(System.in); // probably not good to create a new scanner every frame
-
-        Vec2d result = new Vec2d(0, 0);
-
-        switch (sc.next().charAt(0)) {
-            case 'w':
-                result = new Vec2d(0, -1);
-                break;
-            case 's':
-                result = new Vec2d(0, 1);
-                break;
-            case 'a':
-                result = new Vec2d(-1, 0);
-                break;
-            case 'd':
-                result = new Vec2d(1, 0);
-                break;
-        }
-
-        return result;
     }
 
     public void move(Vec2d dir) {

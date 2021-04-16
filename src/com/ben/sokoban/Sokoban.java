@@ -53,42 +53,12 @@ public class Sokoban {
         this.level = level;
     }
 
-    void drawLevel(Level level) {
-        StringBuffer buffer = new StringBuffer(level.width * level.height + level.height); // capacity includes space for new line characters
-
-        for (int i = 0; i < level.current.length; i++) {
-            if (i != 0 && i % WIDTH == 0)
-                buffer.append("\n");
-
-            Block block = level.current[i];
-            block.draw(buffer);
-        }
-
-        System.out.println(buffer);
-    }
-
     Sokoban() {
         inst = this;
 
         loadLevel();
 
-        new Window(); // spawn a new window
-
-        boolean running = true;
-        while (running) {
-
-            // render
-            // drawLevel(level);
-            //Window.inst.repaint();
-
-            // gather player input
-            // gather input is blocking
-            // game will wait for player input
-//            Vec2d input = player.gatherInput();
-//            player.move(input);
-
-            // somehow exit game?
-        }
+        new Window();
     }
 
     public static void main (String[] args) {
