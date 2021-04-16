@@ -1,5 +1,7 @@
 package com.ben.sokoban.rendering;
 
+import com.ben.sokoban.events.PlayerKeyListener;
+
 import javax.swing.*;
 
 public class Window extends JFrame {
@@ -16,6 +18,8 @@ public class Window extends JFrame {
 
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        addKeyListener(new PlayerKeyListener());
 
         // draw game panel
         add(new GamePanel());

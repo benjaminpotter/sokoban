@@ -9,7 +9,7 @@ public class Sokoban {
     final int WIDTH = 10;
     final int HEIGHT = 10;
 
-    Player player;
+    public Player player;
     Level level;
 
     public Level getLevel() { return level; }
@@ -78,14 +78,14 @@ public class Sokoban {
         while (running) {
 
             // render
-            drawLevel(level);
-            Window.inst.repaint();
+            // drawLevel(level);
+            //Window.inst.repaint();
 
             // gather player input
             // gather input is blocking
             // game will wait for player input
-            Vec2d input = player.gatherInput();
-            player.move(input);
+//            Vec2d input = player.gatherInput();
+//            player.move(input);
 
             // somehow exit game?
         }
