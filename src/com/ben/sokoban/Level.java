@@ -37,4 +37,12 @@ public class Level {
         this.current[firstIndex].pos = new Vec2d (first.x, first.y);
         this.current[lastIndex].pos = new Vec2d(last.x, last.y);
     }
+
+    public boolean checkCompletion() {
+        // are the blocks in the right place
+
+
+
+        return true;
+    }
 }

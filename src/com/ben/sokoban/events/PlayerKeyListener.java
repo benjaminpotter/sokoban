@@ -36,6 +36,9 @@ public class PlayerKeyListener implements KeyListener {
         }
 
         Sokoban.inst.player.move(result); // also probably shouldn't access the player from a singleton public reference.... so be it.
+        if (Sokoban.inst.getLevel().checkCompletion()) {
+            System.out.println("win");
+        }
         Window.inst.repaint(); // probably shouldn't request a new repaint from here
     }
 
